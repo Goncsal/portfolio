@@ -1,6 +1,0 @@
-<!-- This is a placeholder for project thumbnails -->
-<!-- In a real project, you would add actual images like: -->
-<!-- web-security-scanner.png -->
-<!-- react-portfolio-dashboard.png -->
-
-<!-- For now, the portfolio will show placeholder icons when images are not found -->

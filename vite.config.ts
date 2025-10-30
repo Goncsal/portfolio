@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.md'],
-  base: '/portfolio/',
+  base: './',
   build: {
     rollupOptions: {
       output: {

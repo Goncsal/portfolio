@@ -13,11 +13,11 @@ function App() {
         <Navigation />
         <main className="container mx-auto px-4 py-8">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/project/:slug" element={<ProjectDetail />} />
-            <Route path="/writeups" element={<Writeups />} />
-            <Route path="/writeup/:slug" element={<WriteupDetail />} />
+            <Route path="/portfolio/" element={<Home />} />
+            <Route path="/portfolio/projects" element={<Projects />} />
+            <Route path="/portfolio/project/:slug" element={<ProjectDetail />} />
+            <Route path="/portfolio/writeups" element={<Writeups />} />
+            <Route path="/portfolio/writeup/:slug" element={<WriteupDetail />} />
           </Routes>
         </main>
       </div>

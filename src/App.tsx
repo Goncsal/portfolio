@@ -8,7 +8,7 @@ import WriteupDetail from './pages/WriteupDetail'
 
 function App() {
   return (
-    <Router basename="/ClassManager-microsite">
+    <Router basename="/">
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
         <main className="container mx-auto px-4 py-8">

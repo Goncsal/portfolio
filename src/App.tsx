@@ -8,16 +8,16 @@ import WriteupDetail from './pages/WriteupDetail'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/ClassManager-microsite">
       <div className="min-h-screen bg-gray-900 text-white">
         <Navigation />
         <main className="container mx-auto px-4 py-8">
           <Routes>
-            <Route path="/portfolio/" element={<Home />} />
-            <Route path="/portfolio/projects" element={<Projects />} />
-            <Route path="/portfolio/project/:slug" element={<ProjectDetail />} />
-            <Route path="/portfolio/writeups" element={<Writeups />} />
-            <Route path="/portfolio/writeup/:slug" element={<WriteupDetail />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:slug" element={<ProjectDetail />} />
+            <Route path="/writeups" element={<Writeups />} />
+            <Route path="/writeup/:slug" element={<WriteupDetail />} />
           </Routes>
         </main>
       </div>

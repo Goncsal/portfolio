@@ -6,7 +6,7 @@ Project Summary: A sophisticated AI agent for the classic Centipede game, featur
 
 This project is a Python-based clone of the classic arcade game Centipede, designed as a teaching platform for AI development. I developed a sophisticated AI agent that plays the game autonomously, prioritizing survival and strategic efficiency.
 
-## 🏗️ Architecture
+## Architecture
 
 The application uses a client-server architecture:
 - **Server**: Manages game state and coordinates clients.
@@ -14,7 +14,7 @@ The application uses a client-server architecture:
 - **Game Engine**: Contains all game logic and entities.
 - **Student AI**: My implementation of the autonomous agent.
 
-## 🧠 AI Implementation
+## AI Implementation
 
 The agent is built with a defensive-first, opportunistic shooter philosophy. Key systems include:
 
@@ -41,13 +41,13 @@ The agent is built with a defensive-first, opportunistic shooter philosophy. Key
 - **BFS Pathfinding**: Navigates complex mushroom mazes and avoids predicted danger zones.
 - **Stuck Centipede Detection**: Identifies and prioritizes targets trapped in tight oscillations.
 
-## 🎮 Game Mechanics
+## Game Mechanics
 - **Map Size**: 40x24 cells.
 - **Entities**: BugBlaster, Centipedes, Spiders, Fleas, and Mushrooms.
 - **Scoring**: Points for eliminating enemies and clearing obstacles.
 - **Performance**: Runs at 10 FPS with real-time predictions.
 
-## 🎓 Key Learnings
+## Key Learnings
 - **Prediction is Key**: Simulating future states is essential for high-performance AI.
 - **Defense > Offense**: Survival-focused strategies consistently outperform purely aggressive ones.
 - **Heuristic Tuning**: Balancing multiple objectives through weighted scoring systems.

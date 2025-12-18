@@ -2,13 +2,13 @@
 
 Project Summary: ClassManager is a production-ready application template demonstrating best practices for scalable fullstack web applications with React 19, FastAPI, and Docker.
 
-[🌐 Live Website](https://classmanager.aettua.pt/)
+[Live Website](https://classmanager.aettua.pt/)
 
 ## Overview
 
 ClassManager is an educational template designed to demonstrate production-grade fullstack application architecture. It provides a starting point for building scalable web applications with a clear separation between frontend, backend, and deployment layers.
 
-## 🏗️ Architecture
+## Architecture
 
 The application follows a robust three-tier architecture:
 
@@ -17,7 +17,7 @@ The application follows a robust three-tier architecture:
 - **Database**: PostgreSQL for reliable data persistence.
 - **Deployment**: Docker Compose with Nginx as a reverse proxy.
 
-## 🚀 Key Features
+## Key Features
 
 - **Type Safety**: End-to-end type safety with TypeScript and Python type hints.
 - **Fast Development**: Hot Module Replacement (HMR) for a smooth developer experience.
@@ -26,7 +26,7 @@ The application follows a robust three-tier architecture:
 - **Production Ready**: Comprehensive Docker setup, rate limiting, and request buffering.
 - **Modern UI**: Styled with Tailwind CSS v4 and Radix UI components.
 
-## 💻 Tech Stack
+## Tech Stack
 
 ### Backend
 - **FastAPI**: Modern Python web framework.
@@ -46,7 +46,7 @@ The application follows a robust three-tier architecture:
 - **Docker & Docker Compose**: Containerization and orchestration.
 - **Nginx**: Reverse proxy and static file server.
 
-## 🎓 Purpose
+## Purpose
 
 This project serves as a comprehensive guide for:
 - Implementing production-grade fullstack architecture.

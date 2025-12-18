@@ -55,10 +55,10 @@ const About = () => {
         <div className="max-w-4xl mx-auto space-y-16 py-12">
             {/* Profile Section */}
             <section className="space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] bg-clip-text text-transparent">
                     About Me
                 </h1>
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-[var(--text-color)]/80 leading-relaxed">
                     Computer Engineering undergraduate (3rd year) with a strong focus on fullstack development and digital transformation.
                     Experienced in building production-grade applications, automating workflows, and managing digital presence for businesses.
                 </p>
@@ -66,19 +66,19 @@ const About = () => {
 
             {/* Experience Section */}
             <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-white border-b border-gray-800 pb-4">Experience</h2>
+                <h2 className="text-3xl font-bold text-[var(--text-color)] border-b border-[var(--card-border)] pb-4">Experience</h2>
                 <div className="space-y-12">
                     {experiences.map((exp, index) => (
-                        <div key={index} className="relative pl-8 border-l-2 border-cyan-500/30">
-                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+                        <div key={index} className="relative pl-8 border-l-2 border-[var(--accent-cyan)]/30">
+                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[var(--accent-cyan)] shadow-[0_0_10px_var(--accent-cyan)]"></div>
                             <div className="space-y-2">
                                 <div className="flex flex-wrap justify-between items-baseline gap-2">
-                                    <h3 className="text-2xl font-semibold text-cyan-400">{exp.title}</h3>
-                                    <span className="text-gray-500 font-mono text-sm">{exp.period}</span>
+                                    <h3 className="text-2xl font-semibold text-[var(--accent-cyan)]">{exp.title}</h3>
+                                    <span className="text-[var(--text-color)]/50 font-mono text-sm">{exp.period}</span>
                                 </div>
-                                <div className="text-purple-400 font-medium">{exp.company}</div>
-                                <div className="text-gray-500 text-sm mb-4">{exp.location}</div>
-                                <ul className="list-disc list-inside text-gray-400 space-y-2 ml-2">
+                                <div className="text-[var(--accent-purple)] font-medium">{exp.company}</div>
+                                <div className="text-[var(--text-color)]/50 text-sm mb-4">{exp.location}</div>
+                                <ul className="list-disc list-inside text-[var(--text-color)]/70 space-y-2 ml-2">
                                     {exp.highlights.map((highlight, hIndex) => (
                                         <li key={hIndex} className="leading-relaxed">{highlight}</li>
                                     ))}
@@ -91,43 +91,43 @@ const About = () => {
 
             {/* Skills Section */}
             <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-white border-b border-gray-800 pb-4">Technical Skills</h2>
+                <h2 className="text-3xl font-bold text-[var(--text-color)] border-b border-[var(--card-border)] pb-4">Technical Skills</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-cyan-400">Frontend</h3>
+                        <h3 className="text-xl font-semibold text-[var(--accent-cyan)]">Frontend</h3>
                         <div className="flex flex-wrap gap-2">
                             {skills.frontend.map(skill => (
-                                <span key={skill} className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm">
+                                <span key={skill} className="px-3 py-1 rounded-full bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] text-sm">
                                     {skill}
                                 </span>
                             ))}
                         </div>
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-purple-400">Backend</h3>
+                        <h3 className="text-xl font-semibold text-[var(--accent-purple)]">Backend</h3>
                         <div className="flex flex-wrap gap-2">
                             {skills.backend.map(skill => (
-                                <span key={skill} className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm">
+                                <span key={skill} className="px-3 py-1 rounded-full bg-[var(--accent-purple)]/10 border border-[var(--accent-purple)]/20 text-[var(--accent-purple)] text-sm">
                                     {skill}
                                 </span>
                             ))}
                         </div>
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-cyan-400">DevOps</h3>
+                        <h3 className="text-xl font-semibold text-[var(--accent-cyan)]">DevOps</h3>
                         <div className="flex flex-wrap gap-2">
                             {skills.devops.map(skill => (
-                                <span key={skill} className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm">
+                                <span key={skill} className="px-3 py-1 rounded-full bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] text-sm">
                                     {skill}
                                 </span>
                             ))}
                         </div>
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-purple-400">Digital & Creative</h3>
+                        <h3 className="text-xl font-semibold text-[var(--accent-purple)]">Digital & Creative</h3>
                         <div className="flex flex-wrap gap-2">
                             {skills.digital.map(skill => (
-                                <span key={skill} className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm">
+                                <span key={skill} className="px-3 py-1 rounded-full bg-[var(--accent-purple)]/10 border border-[var(--accent-purple)]/20 text-[var(--accent-purple)] text-sm">
                                     {skill}
                                 </span>
                             ))}
@@ -139,30 +139,30 @@ const About = () => {
             {/* Education & Others */}
             <div className="grid md:grid-cols-2 gap-12">
                 <section className="space-y-6">
-                    <h2 className="text-3xl font-bold text-white border-b border-gray-800 pb-4">Education</h2>
+                    <h2 className="text-3xl font-bold text-[var(--text-color)] border-b border-[var(--card-border)] pb-4">Education</h2>
                     <div className="space-y-4">
                         <div>
-                            <h3 className="text-xl font-semibold text-cyan-400">Licenciatura em Engenharia Informática</h3>
-                            <div className="text-purple-400">Universidade de Aveiro</div>
-                            <div className="text-gray-500 text-sm">2022 – Present | Portugal</div>
-                            <p className="text-gray-400 mt-2">3rd Year Undergraduate</p>
+                            <h3 className="text-xl font-semibold text-[var(--accent-cyan)]">Licenciatura em Engenharia Informática</h3>
+                            <div className="text-[var(--accent-purple)]">Universidade de Aveiro</div>
+                            <div className="text-[var(--text-color)]/50 text-sm">2022 – Present | Portugal</div>
+                            <p className="text-[var(--text-color)]/70 mt-2">3rd Year Undergraduate</p>
                         </div>
                     </div>
                 </section>
 
                 <section className="space-y-6">
-                    <h2 className="text-3xl font-bold text-white border-b border-gray-800 pb-4">Certifications & Languages</h2>
+                    <h2 className="text-3xl font-bold text-[var(--text-color)] border-b border-[var(--card-border)] pb-4">Certifications & Languages</h2>
                     <div className="space-y-4">
                         <div>
-                            <h3 className="text-lg font-semibold text-cyan-400">Certifications</h3>
-                            <ul className="text-gray-400 space-y-2">
+                            <h3 className="text-lg font-semibold text-[var(--accent-cyan)]">Certifications</h3>
+                            <ul className="text-[var(--text-color)]/70 space-y-2">
                                 <li>Cybersecurity and Media Education Certificate</li>
-                                <li>TryHackMe Junior Penetration Tester (PT1) — <span className="text-cyan-300/70 italic">In Progress</span></li>
+                                <li>TryHackMe Junior Penetration Tester (PT1) — <span className="text-[var(--accent-cyan)]/70 italic">In Progress</span></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold text-purple-400">Languages</h3>
-                            <ul className="text-gray-400 space-y-1">
+                            <h3 className="text-lg font-semibold text-[var(--accent-purple)]">Languages</h3>
+                            <ul className="text-[var(--text-color)]/70 space-y-1">
                                 <li>Portuguese – Native</li>
                                 <li>English – Professional Proficiency</li>
                             </ul>

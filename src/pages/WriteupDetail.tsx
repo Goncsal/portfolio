@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { getWriteupBySlug, type WriteupMetadata } from '../utils/markdown'
+import { useTheme } from '../context/ThemeContext'
 
 const WriteupDetail = () => {
   const { slug } = useParams<{ slug: string }>()
   const [writeup, setWriteup] = useState<WriteupMetadata | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const loadWriteup = async () => {
@@ -39,8 +41,8 @@ const WriteupDetail = () => {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading writeup...</p>
+          <div className="animate-spin w-8 h-8 border-2 border-[var(--accent-purple)] border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-[var(--text-color)]/50">Loading writeup...</p>
         </div>
       </div>
     )
@@ -54,10 +56,10 @@ const WriteupDetail = () => {
             <span className="text-2xl">❌</span>
           </div>
           <h2 className="text-2xl font-bold text-red-400 mb-2">Writeup Not Found</h2>
-          <p className="text-gray-400 mb-6">{error}</p>
+          <p className="text-[var(--text-color)]/50 mb-6">{error}</p>
           <Link
             to="/writeups"
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 hover:bg-purple-500/20 hover:border-purple-400/40 transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-[var(--accent-purple)]/10 border border-[var(--accent-purple)]/20 text-[var(--accent-purple)] hover:bg-[var(--accent-purple)]/20 hover:border-[var(--accent-purple)]/40 transition-all duration-300"
           >
             ← Back to Writeups
           </Link>
@@ -72,51 +74,51 @@ const WriteupDetail = () => {
       <div className="mb-8">
         <Link
           to="/writeups"
-          className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors mb-6 group"
+          className="inline-flex items-center text-[var(--accent-purple)] hover:text-[var(--accent-purple)]/80 transition-colors mb-6 group"
         >
           <span className="mr-2 group-hover:-translate-x-1 transition-transform duration-300">←</span>
           Back to Writeups
         </Link>
-        
+
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-cyan)] bg-clip-text text-transparent mb-4">
             {writeup.title}
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-[var(--text-color)]/60 max-w-2xl mx-auto">
             {writeup.description}
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <article className="prose prose-invert prose-purple max-w-none">
-        <div className="bg-gray-800/30 rounded-xl p-8 border border-gray-700/50">
+      <article className={`prose ${theme === 'dark' ? 'prose-invert' : ''} max-w-none`}>
+        <div className="bg-[var(--card-bg)] rounded-xl p-8 border border-[var(--card-border)]">
           <ReactMarkdown
             components={{
               h1: ({ children }) => (
-                <h1 className="text-3xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/20">
+                <h1 className="text-3xl font-bold text-[var(--accent-purple)] mb-6 pb-2 border-b border-[var(--accent-purple)]/20">
                   {children}
                 </h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-2xl font-semibold text-cyan-400 mb-4 mt-8">
+                <h2 className="text-2xl font-semibold text-[var(--accent-cyan)]/80 mb-4 mt-8">
                   {children}
                 </h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-xl font-semibold text-purple-300 mb-3 mt-6">
+                <h3 className="text-xl font-semibold text-[var(--accent-purple)]/80 mb-3 mt-6">
                   {children}
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-[var(--text-color)]/80 leading-relaxed mb-4">
                   {children}
                 </p>
               ),
               a: ({ href, children }) => (
                 <a
                   href={href}
-                  className="text-purple-400 hover:text-purple-300 underline decoration-purple-500/30 hover:decoration-purple-400/60 transition-colors"
+                  className="text-[var(--accent-purple)] hover:text-[var(--accent-purple)]/80 underline decoration-[var(--accent-purple)]/30 hover:decoration-[var(--accent-purple)]/60 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -127,74 +129,77 @@ const WriteupDetail = () => {
                 const isInline = !className
                 if (isInline) {
                   return (
-                    <code className="bg-gray-700/50 text-purple-300 px-2 py-1 rounded text-sm">
+                    <code className="bg-[var(--accent-purple)]/10 text-[var(--accent-purple)] px-2 py-1 rounded text-sm">
                       {children}
                     </code>
                   )
                 }
                 return (
-                  <code className="block bg-gray-900/50 text-gray-300 p-4 rounded-lg overflow-x-auto border border-gray-700/30 font-mono text-sm">
+                  <code className="block bg-[var(--bg-color)]/50 text-[var(--text-color)]/80 p-4 rounded-lg overflow-x-auto border border-[var(--card-border)] font-mono text-sm">
                     {children}
                   </code>
                 )
               },
               pre: ({ children }) => (
-                <pre className="bg-gray-900/80 border border-gray-700/50 rounded-lg p-4 overflow-x-auto mb-6">
+                <pre className="bg-[var(--bg-color)]/80 border border-[var(--card-border)] rounded-lg p-4 overflow-x-auto mb-6">
                   {children}
                 </pre>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc list-inside text-gray-300 space-y-2 mb-4 ml-4">
+                <ul className="list-disc list-inside text-[var(--text-color)]/80 space-y-2 mb-4 ml-4">
                   {children}
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal list-inside text-gray-300 space-y-2 mb-4 ml-4">
+                <ol className="list-decimal list-inside text-[var(--text-color)]/80 space-y-2 mb-4 ml-4">
                   {children}
                 </ol>
               ),
               li: ({ children }) => (
-                <li className="text-gray-300">
+                <li className="text-[var(--text-color)]/80">
                   {children}
                 </li>
               ),
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-purple-500/30 pl-4 py-2 bg-purple-500/5 rounded-r-lg my-4">
+                <blockquote className="border-l-4 border-[var(--accent-purple)]/30 pl-4 py-2 bg-[var(--accent-purple)]/5 rounded-r-lg my-4">
                   {children}
                 </blockquote>
               ),
               table: ({ children }) => (
                 <div className="overflow-x-auto mb-6">
-                  <table className="min-w-full divide-y divide-gray-700/50">
+                  <table className="min-w-full divide-y divide-[var(--card-border)]">
                     {children}
                   </table>
                 </div>
               ),
               thead: ({ children }) => (
-                <thead className="bg-gray-800/50">
+                <thead className="bg-[var(--card-bg)]">
                   {children}
                 </thead>
               ),
               tbody: ({ children }) => (
-                <tbody className="divide-y divide-gray-700/30">
+                <tbody className="divide-y divide-[var(--card-border)]">
                   {children}
                 </tbody>
               ),
               tr: ({ children }) => (
-                <tr className="hover:bg-gray-800/30 transition-colors">
+                <tr className="hover:bg-[var(--accent-purple)]/5 transition-colors">
                   {children}
                 </tr>
               ),
               th: ({ children }) => (
-                <th className="px-4 py-3 text-left text-sm font-semibold text-purple-400">
+                <th className="px-4 py-3 text-left text-sm font-semibold text-[var(--accent-purple)]">
                   {children}
                 </th>
               ),
               td: ({ children }) => (
-                <td className="px-4 py-3 text-sm text-gray-300">
+                <td className="px-4 py-3 text-sm text-[var(--text-color)]/80">
                   {children}
                 </td>
               ),
+              img: ({ src, alt }) => (
+                <img src={src} alt={alt} className="rounded-lg border border-[var(--card-border)] my-8 max-w-full h-auto mx-auto" />
+              )
             }}
           >
             {writeup.content}

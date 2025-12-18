@@ -8,7 +8,7 @@ import Writeups from './pages/Writeups'
 import WriteupDetail from './pages/WriteupDetail'
 
 function App() {
-  const basename = import.meta.env.DEV ? '/' : '/portfolio'
+  const basename = import.meta.env.BASE_URL
 
   return (
     <Router basename={basename}>

@@ -17,9 +17,10 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link
             to="/"
-            className="text-xl font-bold bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] bg-clip-text text-transparent hover:opacity-80 transition-all duration-300"
+            className="flex items-center space-x-2 text-xl font-bold bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] bg-clip-text text-transparent hover:opacity-80 transition-all duration-300"
           >
-            Portfolio
+            <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+            <span>Portfolio</span>
           </Link>
 
           <div className="flex items-center space-x-4 md:space-x-8">
@@ -29,8 +30,8 @@ const Navigation = () => {
                   key={item.path}
                   to={item.path}
                   className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${location.pathname === item.path
-                      ? 'text-[var(--accent-cyan)] bg-[var(--accent-cyan)]/10'
-                      : 'text-[var(--text-color)]/70 hover:text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5'
+                    ? 'text-[var(--accent-cyan)] bg-[var(--accent-cyan)]/10'
+                    : 'text-[var(--text-color)]/70 hover:text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5'
                     }`}
                 >
                   {item.label}

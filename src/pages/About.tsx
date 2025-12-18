@@ -41,6 +41,28 @@ const About = () => {
                 'Managed online advertising and social media strategies.',
                 'Video editing and content creation using DaVinci Resolve.'
             ]
+        },
+        {
+            title: 'Digital Media Manager',
+            company: 'VFClinic (Freelance)',
+            period: 'Mar 2023 – Aug 2023',
+            location: 'Ponta Delgada, Portugal (Hybrid)',
+            highlights: [
+                'Managed digital media strategies and online presence.',
+                'Performed video editing, photography, and production for digital content.',
+                'Optimized content for search engines (SEO) and utilized Adobe Photoshop for asset creation.'
+            ]
+        },
+        {
+            title: 'Office Assistant',
+            company: 'Maximplante (Part-time)',
+            period: 'Aug 2022 – Mar 2023',
+            location: 'Ponta Delgada, Portugal',
+            highlights: [
+                'Managed social media and digital marketing initiatives.',
+                'Provided technical support and maintenance for computer hardware and printers.',
+                'Assisted with accounting and administrative office tasks.'
+            ]
         }
     ]
 

@@ -155,7 +155,10 @@ const About = () => {
                     <div className="space-y-4">
                         <div>
                             <h3 className="text-lg font-semibold text-cyan-400">Certifications</h3>
-                            <p className="text-gray-400">Cybersecurity and Media Education Certificate</p>
+                            <ul className="text-gray-400 space-y-2">
+                                <li>Cybersecurity and Media Education Certificate</li>
+                                <li>TryHackMe Junior Penetration Tester (PT1) — <span className="text-cyan-300/70 italic">In Progress</span></li>
+                            </ul>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold text-purple-400">Languages</h3>

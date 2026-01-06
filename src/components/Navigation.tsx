@@ -1,45 +1,104 @@
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 
 const Navigation = () => {
   const location = useLocation()
+  const isHomePage = location.pathname === '/'
+  const [activeSection, setActiveSection] = useState('hero')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/writeups', label: 'Writeups' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'writeups', label: 'Writeups' },
   ]
 
-  return (
-    <nav className="border-b border-[var(--card-border)] bg-[var(--nav-bg)] backdrop-blur-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link
-            to="/"
-            className="flex items-center space-x-2 text-xl font-bold bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] bg-clip-text text-transparent hover:opacity-80 transition-all duration-300"
-          >
-            <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
-            <span>Portfolio</span>
-          </Link>
+  useEffect(() => {
+    if (!isHomePage) return
 
-          <div className="flex items-center space-x-4 md:space-x-8">
-            <div className="hidden md:flex space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${location.pathname === item.path
-                    ? 'text-[var(--accent-cyan)] bg-[var(--accent-cyan)]/10'
-                    : 'text-[var(--text-color)]/70 hover:text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/5'
-                    }`}
-                >
-                  {item.label}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] transform transition-transform duration-300 ${location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`} />
-                </Link>
-              ))}
-            </div>
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+
+      // Determine active section
+      const sections = ['hero', 'about', 'projects', 'writeups']
+      for (const sectionId of sections.reverse()) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 100) {
+            setActiveSection(sectionId)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-[var(--nav-bg)] backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
+        }`}
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo / Name */}
+          {isHomePage ? (
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-xl font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors"
+            >
+              GA
+            </button>
+          ) : (
+            <Link
+              to="/"
+              className="text-xl font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors"
+            >
+              GA
+            </Link>
+          )}
+
+          {/* Navigation Links */}
+          <div className="flex items-center gap-8">
+            {isHomePage && (
+              <div className="flex items-center gap-8">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`text-sm font-medium transition-colors px-3 py-2 rounded-md ${activeSection === item.id
+                        ? 'text-[var(--accent-primary)] bg-[var(--accent-primary)]/10'
+                        : 'text-[var(--text-primary)] hover:text-[var(--accent-primary)]'
+                      }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {!isHomePage && (
+              <Link
+                to="/"
+                className="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors"
+              >
+                ← Back
+              </Link>
+            )}
+
             <ThemeToggle />
           </div>
         </div>

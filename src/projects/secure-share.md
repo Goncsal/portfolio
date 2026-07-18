@@ -1,6 +1,8 @@
 # SecureShare
 
 Project Summary: SecureShare is a single-tenant secure file transfer web application demonstrating enterprise-level security practices, including E2EE, TLS 1.3, and Multi-Level Security (MLS).
+Year: 2025
+Tech: FastAPI, Cryptography, JWT, RSA, Docker
 
 ## Overview
 

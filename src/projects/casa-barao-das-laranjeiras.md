@@ -1,6 +1,8 @@
 # Casa Barão das Laranjeiras
 
 Project Summary: A comprehensive website for a guesthouse in Ponta Delgada, featuring Google integrations, secure mailing forms, and full GDPR compliance.
+Year: 2023 – 2025
+Tech: WordPress, SMTP, DNS, GDPR
 
 ## Overview
 

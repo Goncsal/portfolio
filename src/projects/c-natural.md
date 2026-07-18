@@ -1,6 +1,8 @@
 # C-Natural
 
 Project Summary: A modern web presence for a natural products store in Ponta Delgada, dedicated to physical and emotional well-being through integrated health solutions.
+Year: 2023 – 2025
+Tech: WordPress, cPanel, SEO
 
 ## Overview
 

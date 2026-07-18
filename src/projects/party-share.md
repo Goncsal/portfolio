@@ -1,6 +1,8 @@
 # PartyShare
 
 Project Summary: PartyShare is a comprehensive rental platform for event equipment, featuring a robust CI/CD pipeline, automated testing, and high-quality software engineering practices.
+Year: 2025
+Tech: Java, Docker, GitHub Actions, SonarCloud
 
 ## Overview
 

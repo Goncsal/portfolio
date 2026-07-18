@@ -1,246 +1,180 @@
+const experiences = [
+    {
+        title: 'Cybersecurity Intern — Defense Sector',
+        company: 'Trisolaris',
+        period: 'Jul 2026',
+        points: [
+            'Applied offensive and defensive security to unmanned systems — hardening embedded platforms and the communication links between drones and base control stations.',
+            'Analysed and mitigated threats to autonomous architectures, including GPS spoofing, signal jamming and unauthorised data modification.',
+            'Contributed to mission-critical risk analysis, vulnerability identification and custom security monitoring workflows.',
+        ],
+    },
+    {
+        title: 'Web & Python Developer',
+        company: 'Casa Barão / C-Natural',
+        period: 'Apr 2023 – Dec 2025',
+        points: [
+            'Automated critical internal workflows with modular Python scripts and relational database integrations.',
+            'Maintained and optimised commercial platforms on WordPress, cPanel and custom backend extensions.',
+        ],
+    },
+    {
+        title: 'Digital Consultant (Intern)',
+        company: 'JOMAFREITAS',
+        period: 'Jul 2025 – Aug 2025',
+        points: [
+            'Consulted on IT infrastructure modernisation, DNS routing/management and Human Resources Information Systems (SIRH).',
+        ],
+    },
+    {
+        title: 'Freelance Digital Strategist / Manager',
+        company: 'Various Clients',
+        period: '2022 – 2025',
+        points: [
+            'Provided on-demand IT support, infrastructure scaling and web management for small-to-medium businesses including Mobilar, Maximplante and VFClinic.',
+        ],
+    },
+]
+
+const skillGroups = [
+    { label: 'Languages', items: ['Python', 'Java', 'TypeScript', 'Kotlin', 'JavaScript', 'Bash'] },
+    { label: 'Frameworks', items: ['Django', 'FastAPI', 'Flask', 'React 19', 'Spring Boot', 'Flutter'] },
+    { label: 'Data', items: ['PostgreSQL', 'MS SQL', 'MongoDB', 'Redis', 'Cassandra', 'Neo4j'] },
+    { label: 'Security', items: ['E2EE', 'RSA/JWT', 'TLS 1.3', 'RBAC / MLS', 'Burp Suite', 'Metasploit', 'Bloodhound', 'SqlMap'] },
+    { label: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'SonarCloud', 'Nginx', 'Linux', 'Homelab'] },
+]
+
+const Tag = ({ children }: { children: React.ReactNode }) => (
+    <span
+        className="px-2.5 py-1 text-xs rounded-md border font-mono"
+        style={{
+            backgroundColor: 'var(--bg-elevated)',
+            borderColor: 'var(--border-color)',
+            color: 'var(--text-secondary)',
+        }}
+    >
+        {children}
+    </span>
+)
+
 const AboutSection = () => {
-    const experiences = [
-        {
-            title: 'Social Media Manager & Web Developer',
-            company: 'Cnatural (Freelance)',
-            period: 'Mar 2023 – Present',
-            location: 'Ponta Delgada, Portugal',
-            highlights: [
-                'Developed and maintain the official website: c-natural.pt using WordPress and cPanel.',
-                'Managing digital marketing strategy, online advertising, and social media presence.',
-                'Technical consulting in IT and database management.'
-            ]
-        },
-        {
-            title: 'Web and Python Developer',
-            company: 'CasaBarão - Alojamento (Freelance)',
-            period: 'Apr 2023 – Nov 2025',
-            location: 'Remote / Ponta Delgada',
-            highlights: [
-                'Developed the website casabaraodaslaranjeiras.pt.',
-                'Created custom Python scripts and applications to automate internal workflows.',
-                'Implemented SEO, Google Analytics, and managed Google Ads campaigns.'
-            ]
-        },
-        {
-            title: 'Digital Consultant (Intern)',
-            company: 'JOMAFREITAS - Hotelaria e Restauração',
-            period: 'Jul 2025 – Aug 2025',
-            location: 'Ponta Delgada',
-            highlights: [
-                'Consulting on IT infrastructure, DNS management, and SEO optimization.',
-                'Support in Information Systems for Human Resources (SIRH).'
-            ]
-        },
-        {
-            title: 'Social Media Marketing Manager',
-            company: 'Mobilar (Freelance)',
-            period: 'Mar 2023 – Sep 2024',
-            location: 'Ponta Delgada',
-            highlights: [
-                'Managed online advertising and social media strategies.',
-                'Video editing and content creation using DaVinci Resolve.'
-            ]
-        },
-        {
-            title: 'Digital Media Manager',
-            company: 'VFClinic (Freelance)',
-            period: 'Mar 2023 – Aug 2023',
-            location: 'Ponta Delgada, Portugal (Hybrid)',
-            highlights: [
-                'Managed digital media strategies and online presence.',
-                'Video editing, photography, and production for digital content.',
-                'SEO optimization and Adobe Photoshop for asset creation.'
-            ]
-        },
-        {
-            title: 'Office Assistant',
-            company: 'Maximplante (Part-time)',
-            period: 'Aug 2022 – Mar 2023',
-            location: 'Ponta Delgada, Portugal',
-            highlights: [
-                'Managed social media and digital marketing initiatives.',
-                'Technical support and maintenance for computer hardware.',
-                'Assisted with accounting and administrative tasks.'
-            ]
-        }
-    ]
-
-    const skills = {
-        frontend: ['React.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'WordPress'],
-        backend: ['FastAPI', 'Flask', 'Spring Boot', 'Python', 'SQL Server', 'PostgreSQL', 'MongoDB', 'Keycloak'],
-        devops: ['Docker', 'Nginx', 'CI/CD', 'SonarCloud', 'Sentry', 'Flyway'],
-        digital: ['SEO & Google Analytics', 'DaVinci Resolve', 'Photoshop']
-    }
-
     return (
-        <section
-            id="about"
-            className="h-screen flex flex-col"
-            style={{
-                backgroundColor: 'var(--bg-secondary)',
-                scrollSnapAlign: 'start',
-                scrollSnapStop: 'always'
-            }}
-        >
-            {/* Title at top */}
-            <div className="pt-24 pb-6 w-full text-center px-8 md:px-16 lg:px-24 transition-colors duration-300" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                    About Me
+        <section id="about" className="py-24 md:py-32 px-6 md:px-8" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+            <div className="max-w-5xl mx-auto w-full">
+                {/* Header */}
+                <p className="eyebrow mb-3">01 — About</p>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-primary)' }}>
+                    Background
                 </h2>
-                <div className="w-20 h-1 mx-auto" style={{ backgroundColor: 'var(--accent-primary)' }}></div>
-            </div>
+                <p className="text-lg leading-relaxed max-w-2xl mb-16" style={{ color: 'var(--text-secondary)' }}>
+                    Software Engineering graduate who leans fullstack but keeps one foot in security.
+                    I like problems where the hard part is the modelling — turning something messy and
+                    real into a system that holds up — and I care about shipping things that people
+                    actually use, not demos.
+                </p>
 
-            {/* Content in remaining space */}
-            <div className="flex-1 flex flex-col justify-center w-full overflow-y-auto min-h-0 items-center">
-                <div className="max-w-6xl mx-auto w-full py-8 px-8 md:px-16 lg:px-24">
-                    {/* Bio */}
-                    <p className="text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-center" style={{ color: 'var(--text-secondary)' }}>
-                        Computer Engineering undergraduate (3rd year) at Universidade de Aveiro with a
-                        strong focus on fullstack development and digital transformation. Experienced in
-                        building production-grade applications, automating workflows, and managing digital
-                        presence for businesses.
-                    </p>
+                <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 lg:gap-16">
+                    {/* Experience */}
+                    <div>
+                        <h3 className="font-mono text-sm uppercase tracking-widest mb-8" style={{ color: 'var(--text-secondary)' }}>
+                            Experience
+                        </h3>
+                        <div className="space-y-9">
+                            {experiences.map((exp) => (
+                                <div key={exp.title} className="relative pl-6">
+                                    <span
+                                        className="absolute left-0 top-2 w-2 h-2 rounded-full"
+                                        style={{ backgroundColor: 'var(--accent-primary)' }}
+                                    />
+                                    <span
+                                        className="absolute left-[3.5px] top-4 bottom-[-2.25rem] w-px"
+                                        style={{ backgroundColor: 'var(--border-color)' }}
+                                    />
+                                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                                        <h4 className="font-semibold text-[0.98rem]" style={{ color: 'var(--text-primary)' }}>
+                                            {exp.title}
+                                        </h4>
+                                        <span className="font-mono text-xs whitespace-nowrap" style={{ color: 'var(--text-secondary)' }}>
+                                            {exp.period}
+                                        </span>
+                                    </div>
+                                    <p className="text-sm font-medium mb-2.5" style={{ color: 'var(--accent-primary)' }}>
+                                        {exp.company}
+                                    </p>
+                                    <ul className="space-y-1.5">
+                                        {exp.points.map((p, i) => (
+                                            <li key={i} className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                                                {p}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
-                    {/* Main Grid */}
-                    <div className="grid lg:grid-cols-2 gap-12">
-                        {/* Experience Column */}
+                    {/* Right column */}
+                    <div className="space-y-12">
+                        {/* Skills */}
                         <div>
-                            <h3 className="text-2xl font-semibold mb-6" style={{ color: 'var(--text-primary)' }}>
-                                Experience
+                            <h3 className="font-mono text-sm uppercase tracking-widest mb-6" style={{ color: 'var(--text-secondary)' }}>
+                                Toolbox
                             </h3>
-                            <div className="space-y-6">
-                                {experiences.map((exp, index) => (
-                                    <div
-                                        key={index}
-                                        className="border-l-2 pl-5 transition-colors"
-                                        style={{ borderColor: 'var(--border-color)' }}
-                                    >
-                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
-                                            <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>
-                                                {exp.title}
-                                            </h4>
-                                            <span className="text-xs whitespace-nowrap" style={{ color: 'var(--text-secondary)' }}>
-                                                {exp.period}
-                                            </span>
+                            <div className="space-y-4">
+                                {skillGroups.map((group) => (
+                                    <div key={group.label} className="grid grid-cols-[5rem_1fr] gap-3 items-start">
+                                        <span className="text-xs font-medium pt-1.5" style={{ color: 'var(--text-primary)' }}>
+                                            {group.label}
+                                        </span>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {group.items.map((item) => (
+                                                <Tag key={item}>{item}</Tag>
+                                            ))}
                                         </div>
-                                        <p className="text-sm" style={{ color: 'var(--accent-primary)' }}>
-                                            {exp.company}
-                                        </p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Skills & Education Column */}
-                        <div className="space-y-10">
-                            {/* Skills */}
-                            <div>
-                                <h3 className="text-2xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
-                                    Technical Skills
-                                </h3>
-
-                                <div className="space-y-4">
-                                    <div>
-                                        <h4 className="text-xs font-medium mb-2" style={{ color: 'var(--accent-primary)' }}>Frontend</h4>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {skills.frontend.map((skill) => (
-                                                <span
-                                                    key={skill}
-                                                    className="px-2 py-1 text-xs rounded-full border"
-                                                    style={{
-                                                        backgroundColor: 'var(--bg-primary)',
-                                                        borderColor: 'var(--border-color)',
-                                                        color: 'var(--text-primary)'
-                                                    }}
-                                                >
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h4 className="text-xs font-medium mb-2" style={{ color: 'var(--accent-primary)' }}>Backend</h4>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {skills.backend.map((skill) => (
-                                                <span
-                                                    key={skill}
-                                                    className="px-2 py-1 text-xs rounded-full border"
-                                                    style={{
-                                                        backgroundColor: 'var(--bg-primary)',
-                                                        borderColor: 'var(--border-color)',
-                                                        color: 'var(--text-primary)'
-                                                    }}
-                                                >
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h4 className="text-xs font-medium mb-2" style={{ color: 'var(--accent-primary)' }}>DevOps</h4>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {skills.devops.map((skill) => (
-                                                <span
-                                                    key={skill}
-                                                    className="px-2 py-1 text-xs rounded-full border"
-                                                    style={{
-                                                        backgroundColor: 'var(--bg-primary)',
-                                                        borderColor: 'var(--border-color)',
-                                                        color: 'var(--text-primary)'
-                                                    }}
-                                                >
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+                        {/* Education */}
+                        <div>
+                            <h3 className="font-mono text-sm uppercase tracking-widest mb-6" style={{ color: 'var(--text-secondary)' }}>
+                                Education
+                            </h3>
+                            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                                <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>
+                                    BSc in Software Engineering
+                                </h4>
+                                <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                                    2023 – 2026
+                                </span>
                             </div>
+                            <p className="text-sm" style={{ color: 'var(--accent-primary)' }}>
+                                University of Aveiro
+                            </p>
+                        </div>
 
-                            {/* Education */}
+                        {/* Certifications + Languages */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                             <div>
-                                <h3 className="text-2xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
-                                    Education
+                                <h3 className="font-mono text-sm uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>
+                                    Certs & More
                                 </h3>
-                                <div
-                                    className="border-l-2 pl-5"
-                                    style={{ borderColor: 'var(--border-color)' }}
-                                >
-                                    <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>
-                                        Licenciatura em Engenharia Informática
-                                    </h4>
-                                    <p className="text-sm" style={{ color: 'var(--accent-primary)' }}>
-                                        Universidade de Aveiro
-                                    </p>
-                                    <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                                        2022 – Present | 3rd Year
-                                    </p>
-                                </div>
+                                <ul className="space-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                    <li>TryHackMe Jr Penetration Tester (PT1)</li>
+                                    <li>Cybersecurity &amp; Media Education</li>
+                                    <li>AWS DevOps Workshop — Mindera</li>
+                                    <li>UAC Collaborator · CTF competitor</li>
+                                </ul>
                             </div>
-
-                            {/* Certifications & Languages */}
-                            <div className="grid grid-cols-2 gap-6">
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
-                                        Certifications
-                                    </h3>
-                                    <ul className="space-y-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
-                                        <li>• Cybersecurity Certificate</li>
-                                        <li>• TryHackMe PT1 – Jr Penetration Tester <span style={{ color: 'var(--accent-primary)' }}>(2026)</span></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
-                                        Languages
-                                    </h3>
-                                    <ul className="space-y-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
-                                        <li>• Portuguese – Native</li>
-                                        <li>• English – Professional</li>
-                                    </ul>
-                                </div>
+                            <div>
+                                <h3 className="font-mono text-sm uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>
+                                    Languages
+                                </h3>
+                                <ul className="space-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                    <li>Portuguese — Native</li>
+                                    <li>English — Proficient (C1)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

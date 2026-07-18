@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
-import ThemeToggle from './components/ThemeToggle'
+import Navigation from './components/Navigation'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
@@ -12,11 +12,7 @@ import WriteupDetail from './pages/WriteupDetail'
 function HomePage() {
   return (
     <>
-      {/* Floating Theme Toggle */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-
+      <Navigation />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />

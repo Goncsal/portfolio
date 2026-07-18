@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { getProjectBySlug, type ProjectMetadata } from '../utils/markdown'
+import { getProjectBySlug, stripProjectMeta, type ProjectMetadata } from '../utils/markdown'
 import { useTheme } from '../context/ThemeContext'
 import Navigation from '../components/Navigation'
 
@@ -76,12 +76,42 @@ const ProjectDetail = () => {
       <article className="max-w-3xl mx-auto">
         {/* Header */}
         <header className="mb-12">
+          {project.year && (
+            <p className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-4">
+              {project.year}
+            </p>
+          )}
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
             {project.title}
           </h1>
           <p className="text-xl text-[var(--text-secondary)]">
             {project.summary}
           </p>
+
+          {(project.tech.length > 0 || project.link) && (
+            <div className="flex flex-wrap items-center gap-2 mt-6">
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className="font-mono text-xs px-2.5 py-1 rounded border border-[var(--border-color)] text-[var(--text-secondary)]"
+                >
+                  {t}
+                </span>
+              ))}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-1 inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full text-white"
+                  style={{ backgroundColor: 'var(--accent-primary)' }}
+                >
+                  Live site
+                  <span aria-hidden>↗</span>
+                </a>
+              )}
+            </div>
+          )}
         </header>
 
         {/* Thumbnail */}
@@ -173,7 +203,7 @@ const ProjectDetail = () => {
               )
             }}
           >
-            {project.content}
+            {stripProjectMeta(project.content)}
           </ReactMarkdown>
         </div>
       </article>

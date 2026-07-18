@@ -6,9 +6,9 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-3 rounded-full border backdrop-blur-sm transition-all duration-200 hover:scale-110"
+            className="p-2 rounded-full border transition-all duration-200 hover:scale-110"
             style={{
-                backgroundColor: 'var(--bg-primary)',
+                backgroundColor: 'transparent',
                 borderColor: 'var(--border-color)',
                 color: 'var(--text-secondary)'
             }}

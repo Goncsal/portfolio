@@ -1,135 +1,149 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getProjectFiles, type ProjectMetadata } from '../utils/markdown'
-import { useHorizontalScroll } from '../utils/useHorizontalScroll'
+
+const Thumb = ({ project }: { project: ProjectMetadata }) => {
+    const [broken, setBroken] = useState(false)
+
+    if (broken || !project.thumbnail) {
+        return (
+            <div
+                className="w-full h-full flex items-center justify-center"
+                style={{
+                    background: 'linear-gradient(135deg, var(--bg-secondary), var(--bg-elevated))',
+                    color: 'var(--accent-primary)',
+                }}
+            >
+                <span className="font-mono text-3xl font-bold opacity-40">
+                    {project.title.slice(0, 2).toUpperCase()}
+                </span>
+            </div>
+        )
+    }
+
+    return (
+        <img
+            src={project.thumbnail}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            onError={() => setBroken(true)}
+        />
+    )
+}
+
+const TechRow = ({ tech }: { tech: string[] }) => (
+    <div className="flex flex-wrap gap-1.5 mt-4">
+        {tech.slice(0, 4).map((t) => (
+            <span
+                key={t}
+                className="font-mono text-[0.68rem] px-2 py-0.5 rounded border"
+                style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+            >
+                {t}
+            </span>
+        ))}
+    </div>
+)
 
 const ProjectsSection = () => {
     const [projects, setProjects] = useState<ProjectMetadata[]>([])
     const [loading, setLoading] = useState(true)
-    const scrollRef = useHorizontalScroll()
 
     useEffect(() => {
-        const loadProjects = async () => {
-            try {
-                const projectData = await getProjectFiles()
-                setProjects(projectData)
-            } catch (error) {
-                console.error('Error loading projects:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadProjects()
+        getProjectFiles()
+            .then(setProjects)
+            .catch((err) => console.error('Error loading projects:', err))
+            .finally(() => setLoading(false))
     }, [])
 
-    return (
-        <section
-            id="projects"
-            className="h-screen flex flex-col"
-            style={{
-                backgroundColor: 'var(--bg-primary)',
-                scrollSnapAlign: 'start',
-                scrollSnapStop: 'always'
-            }}
-        >
-            {/* Title at top */}
-            <div className="pt-24 pb-8 px-8 md:px-16 lg:px-24 text-center" style={{ backgroundColor: 'var(--bg-primary)' }}>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                    Projects
-                </h2>
-                <div className="w-20 h-1 mx-auto" style={{ backgroundColor: 'var(--accent-primary)' }}></div>
-            </div>
+    const [featured, ...rest] = projects
 
-            {/* Full-width horizontal scroll carousel */}
-            <div className="flex-1 flex flex-col justify-center w-full items-center">
-                <div className="flex items-center w-full">
-                    {loading ? (
-                        <div className="flex items-center justify-center w-full">
-                            <div
-                                className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"
-                                style={{ borderColor: 'var(--accent-primary)', borderTopColor: 'transparent' }}
-                            ></div>
-                        </div>
-                    ) : projects.length === 0 ? (
-                        <p className="text-center w-full" style={{ color: 'var(--text-secondary)' }}>
-                            No projects yet.
-                        </p>
-                    ) : (
+    return (
+        <section id="work" className="py-24 md:py-32 px-6 md:px-8" style={{ backgroundColor: 'var(--bg-primary)' }}>
+            <div className="max-w-5xl mx-auto w-full">
+                <p className="eyebrow mb-3">02 — Work</p>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: 'var(--text-primary)' }}>
+                    Selected projects
+                </h2>
+                <p className="text-lg leading-relaxed max-w-2xl mb-14" style={{ color: 'var(--text-secondary)' }}>
+                    A mix of coursework, side projects and client work — from a financial modelling
+                    engine to secure file transfer. Click any of them for the full story.
+                </p>
+
+                {loading ? (
+                    <div className="flex justify-center py-20">
                         <div
-                            ref={scrollRef}
-                            className="flex gap-6 overflow-x-auto px-8 md:px-16 lg:px-24 pb-4 w-full scrollbar-hide cursor-grab active:cursor-grabbing"
-                            style={{
-                                scrollbarWidth: 'none',
-                                msOverflowStyle: 'none'
-                            }}
-                        >
-                            {projects.map((project) => (
-                                <Link
-                                    key={project.slug}
-                                    to={`/project/${project.slug}`}
-                                    className="group flex-shrink-0 w-80 md:w-96 rounded-xl overflow-hidden border transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
-                                    style={{
-                                        backgroundColor: 'var(--bg-secondary)',
-                                        borderColor: 'var(--border-color)'
-                                    }}
-                                >
-                                    {/* Thumbnail */}
-                                    <div
-                                        className="aspect-video overflow-hidden"
-                                        style={{ backgroundColor: 'var(--border-color)' }}
-                                    >
-                                        {project.thumbnail ? (
-                                            <img
-                                                src={project.thumbnail}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                onError={(e) => {
-                                                    const target = e.target as HTMLImageElement
-                                                    target.style.display = 'none'
-                                                }}
-                                            />
-                                        ) : (
-                                            <div
-                                                className="w-full h-full flex items-center justify-center"
-                                                style={{ color: 'var(--text-secondary)' }}
-                                            >
-                                                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                                                </svg>
-                                            </div>
+                            className="w-7 h-7 border-2 rounded-full animate-spin"
+                            style={{ borderColor: 'var(--border-color)', borderTopColor: 'var(--accent-primary)' }}
+                        />
+                    </div>
+                ) : projects.length === 0 ? (
+                    <p style={{ color: 'var(--text-secondary)' }}>No projects yet.</p>
+                ) : (
+                    <div className="grid sm:grid-cols-2 gap-5">
+                        {/* Featured */}
+                        {featured && (
+                            <Link
+                                to={`/project/${featured.slug}`}
+                                className="group sm:col-span-2 grid md:grid-cols-2 rounded-2xl overflow-hidden border hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                                style={{ backgroundColor: 'var(--bg-elevated)', borderColor: 'var(--border-color)' }}
+                            >
+                                <div className="aspect-video md:aspect-auto md:h-full overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                                    <Thumb project={featured} />
+                                </div>
+                                <div className="p-7 flex flex-col justify-center">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <span className="eyebrow" style={{ color: 'var(--accent-primary)' }}>Featured</span>
+                                        {featured.year && (
+                                            <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>{featured.year}</span>
                                         )}
                                     </div>
+                                    <h3 className="text-2xl font-bold tracking-tight mb-3" style={{ color: 'var(--text-primary)' }}>
+                                        {featured.title}
+                                    </h3>
+                                    <p className="text-sm leading-relaxed line-clamp-3" style={{ color: 'var(--text-secondary)' }}>
+                                        {featured.summary}
+                                    </p>
+                                    <TechRow tech={featured.tech} />
+                                </div>
+                            </Link>
+                        )}
 
-                                    {/* Content */}
-                                    <div className="p-5">
+                        {/* Rest */}
+                        {rest.map((project) => (
+                            <Link
+                                key={project.slug}
+                                to={`/project/${project.slug}`}
+                                className="group flex flex-col rounded-2xl overflow-hidden border hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                                style={{ backgroundColor: 'var(--bg-elevated)', borderColor: 'var(--border-color)' }}
+                            >
+                                <div className="aspect-video overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                                    <Thumb project={project} />
+                                </div>
+                                <div className="p-5 flex flex-col flex-1">
+                                    <div className="flex items-baseline justify-between gap-3 mb-2">
                                         <h3
-                                            className="font-semibold text-lg mb-2 group-hover:text-[var(--accent-primary)] transition-colors"
+                                            className="font-semibold text-lg tracking-tight transition-colors group-hover:text-[var(--accent-primary)]"
                                             style={{ color: 'var(--text-primary)' }}
                                         >
                                             {project.title}
                                         </h3>
-                                        <p
-                                            className="text-sm leading-relaxed line-clamp-2"
-                                            style={{ color: 'var(--text-secondary)' }}
-                                        >
-                                            {project.summary}
-                                        </p>
+                                        {project.year && (
+                                            <span className="font-mono text-[0.7rem] whitespace-nowrap" style={{ color: 'var(--text-secondary)' }}>
+                                                {project.year}
+                                            </span>
+                                        )}
                                     </div>
-                                </Link>
-                            ))}
-                            {/* Spacer at end for padding */}
-                            <div className="flex-shrink-0 w-8 md:w-16 lg:w-24"></div>
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Hint */}
-            <div className="pb-8 text-center">
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    ← Scroll horizontally to see more →
-                </p>
+                                    <p className="text-sm leading-relaxed line-clamp-2" style={{ color: 'var(--text-secondary)' }}>
+                                        {project.summary}
+                                    </p>
+                                    <TechRow tech={project.tech} />
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     )

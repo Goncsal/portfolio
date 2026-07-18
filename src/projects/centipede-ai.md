@@ -1,6 +1,8 @@
 # Centipede AI Agent
 
 Project Summary: A sophisticated AI agent for the classic Centipede game, featuring predictive pathfinding, defensive positioning, and strategic shooting logic.
+Year: 2024
+Tech: Python, BFS Pathfinding, Sockets
 
 ## Overview
 

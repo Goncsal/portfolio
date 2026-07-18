@@ -1,8 +1,9 @@
 # Next.js Showcase
 
 Project Summary: An educational/demonstration app that showcases modern Next.js development patterns, including Server Components, Server Actions, and React 19 features.
-
-Live: [nextssshowcase.vercel.app](https://nextssshowcase.vercel.app/)
+Year: 2025
+Tech: Next.js 16, React 19, TypeScript, Tailwind
+Link: https://nextssshowcase.vercel.app/
 
 ## Overview
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { getWriteupBySlug, type WriteupMetadata } from '../utils/markdown'
+import { getWriteupBySlug, stripProjectMeta, type WriteupMetadata } from '../utils/markdown'
 import { useTheme } from '../context/ThemeContext'
 import Navigation from '../components/Navigation'
 
@@ -195,7 +195,7 @@ const WriteupDetail = () => {
               )
             }}
           >
-            {writeup.content}
+            {stripProjectMeta(writeup.content)}
           </ReactMarkdown>
         </div>
       </article>

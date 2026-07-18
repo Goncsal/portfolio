@@ -1,8 +1,9 @@
 # ClassManager
 
-Project Summary: ClassManager is a production-ready application template demonstrating best practices for scalable fullstack web applications with React 19, FastAPI, and Docker.
-
-[Live Website](https://classmanager.aettua.pt/)
+Project Summary: A production-grade fullstack platform with secure OAuth2/JWT identity federation via Keycloak, built on React 19, FastAPI and Docker.
+Year: 2025 – Present
+Tech: FastAPI, React 19, Keycloak, PostgreSQL, Docker
+Link: https://classmanager.aettua.pt/
 
 ## Overview
 
@@ -19,6 +20,7 @@ The application follows a robust three-tier architecture:
 
 ## Key Features
 
+- **Identity & Access**: Centralised authentication with OAuth2/JWT federation via Keycloak.
 - **Type Safety**: End-to-end type safety with TypeScript and Python type hints.
 - **Fast Development**: Hot Module Replacement (HMR) for a smooth developer experience.
 - **API Documentation**: Automatic documentation with Swagger UI.

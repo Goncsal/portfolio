@@ -1,4 +1,4 @@
-# Business Planner
+const e=`# Business Planner
 
 Project Summary: A full-stack web app for building Portuguese business plans — a report editor plus a financial engine that reproduces the official spreadsheet model cell-for-cell, with real-time co-editing and PDF/Word export.
 Year: 2025 – Present
@@ -12,9 +12,9 @@ You write the plan's sections in a structured editor, fill in the financial assu
 
 ## The financial engine
 
-This was the hard part, and the reason the project exists. The official template is around 2,800 formulas spread across 15 sheets. I extracted the whole thing to JSON, translated every Excel cell reference into a semantic id like `pressupostos.total_de_vendas_e_servicos_prestados[2025]`, and rebuilt it server-side.
+This was the hard part, and the reason the project exists. The official template is around 2,800 formulas spread across 15 sheets. I extracted the whole thing to JSON, translated every Excel cell reference into a semantic id like \`pressupostos.total_de_vendas_e_servicos_prestados[2025]\`, and rebuilt it server-side.
 
-The engine loads that model, builds the dependency graph, sorts it topologically and evaluates the formulas in order. About a quarter of them were `SUM`/`SUMIF` running over variable-length ranges — products, raw materials, personnel, assets, loans — which don't map onto single cells. Those I modelled as real relational tables and aggregate back into the engine. Every cell also keeps the value it had in the original spreadsheet, so I can check the engine's output against the real template instead of trusting it.
+The engine loads that model, builds the dependency graph, sorts it topologically and evaluates the formulas in order. About a quarter of them were \`SUM\`/\`SUMIF\` running over variable-length ranges — products, raw materials, personnel, assets, loans — which don't map onto single cells. Those I modelled as real relational tables and aggregate back into the engine. Every cell also keeps the value it had in the original spreadsheet, so I can check the engine's output against the real template instead of trusting it.
 
 ## The rest of the app
 
@@ -32,3 +32,4 @@ Django + Django REST Framework on the backend (ASGI, JWT auth, Channels for the 
 - Turning a 2,800-formula spreadsheet into a dependency graph taught me more about topological ordering and validating your own output than any exercise had.
 - Real-time co-editing is deceptively hard: presence, cursors and conflicting edits all have to stay in agreement.
 - Holding the output to "matches the official template cell-for-cell" forced a lot of discipline around testing against known values — which turned out to be the only way I trusted the thing at all.
+`;export{e as default};

@@ -1,6 +1,8 @@
 # Sudoku PWA
 
 Project Summary: A fully-featured, offline-first Sudoku puzzle game built as a Progressive Web App (PWA) with advanced gameplay features, auto-save, and a clean, responsive design.
+Year: 2024
+Tech: PWA, TypeScript, IndexedDB, Service Worker
 
 ## Overview
 

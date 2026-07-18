@@ -229,7 +229,7 @@ const AboutSection = () => {
                                     </h3>
                                     <ul className="space-y-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
                                         <li>• Cybersecurity Certificate</li>
-                                        <li>• TryHackMe PT1 <span style={{ color: 'var(--accent-primary)' }}>(In Progress)</span></li>
+                                        <li>• TryHackMe PT1 – Jr Penetration Tester <span style={{ color: 'var(--accent-primary)' }}>(2026)</span></li>
                                     </ul>
                                 </div>
                                 <div>

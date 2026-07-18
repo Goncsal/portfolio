@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { getProjectBySlug, type ProjectMetadata } from '../utils/markdown'
 import { useTheme } from '../context/ThemeContext'
+import Navigation from '../components/Navigation'
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>()
@@ -39,16 +40,21 @@ const ProjectDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-16">
-        <div className="w-6 h-6 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin"></div>
-      </div>
+      <>
+        <Navigation />
+        <div className="min-h-screen flex items-center justify-center pt-16">
+          <div className="w-6 h-6 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </>
     )
   }
 
   if (error || !project) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-16">
-        <div className="text-center">
+      <>
+        <Navigation />
+        <div className="min-h-screen flex items-center justify-center pt-16">
+          <div className="text-center">
           <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-2">Project Not Found</h2>
           <p className="text-[var(--text-secondary)] mb-6">{error}</p>
           <Link
@@ -57,13 +63,16 @@ const ProjectDetail = () => {
           >
             ← Back to Home
           </Link>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
+    <>
+      <Navigation />
+      <div className="min-h-screen pt-24 pb-16 px-6">
       <article className="max-w-3xl mx-auto">
         {/* Header */}
         <header className="mb-12">
@@ -168,7 +177,8 @@ const ProjectDetail = () => {
           </ReactMarkdown>
         </div>
       </article>
-    </div>
+      </div>
+    </>
   )
 }
 

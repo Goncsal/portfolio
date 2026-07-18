@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { getWriteupBySlug, type WriteupMetadata } from '../utils/markdown'
 import { useTheme } from '../context/ThemeContext'
+import Navigation from '../components/Navigation'
 
 const WriteupDetail = () => {
   const { slug } = useParams<{ slug: string }>()
@@ -39,31 +40,39 @@ const WriteupDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-16">
-        <div className="w-6 h-6 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin"></div>
-      </div>
+      <>
+        <Navigation />
+        <div className="min-h-screen flex items-center justify-center pt-16">
+          <div className="w-6 h-6 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </>
     )
   }
 
   if (error || !writeup) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-16">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-2">Writeup Not Found</h2>
-          <p className="text-[var(--text-secondary)] mb-6">{error}</p>
-          <Link
-            to="/"
-            className="text-[var(--accent-primary)] hover:underline"
-          >
-            ← Back to Home
-          </Link>
+      <>
+        <Navigation />
+        <div className="min-h-screen flex items-center justify-center pt-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-2">Writeup Not Found</h2>
+            <p className="text-[var(--text-secondary)] mb-6">{error}</p>
+            <Link
+              to="/"
+              className="text-[var(--accent-primary)] hover:underline"
+            >
+              ← Back to Home
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
+    <>
+      <Navigation />
+      <div className="min-h-screen pt-24 pb-16 px-6">
       <article className="max-w-3xl mx-auto">
         {/* Header */}
         <header className="mb-12">
@@ -190,7 +199,8 @@ const WriteupDetail = () => {
           </ReactMarkdown>
         </div>
       </article>
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -29,7 +29,8 @@ const ProjectsSection = () => {
             className="h-screen flex flex-col"
             style={{
                 backgroundColor: 'var(--bg-primary)',
-                scrollSnapAlign: 'start'
+                scrollSnapAlign: 'start',
+                scrollSnapStop: 'always'
             }}
         >
             {/* Title at top */}

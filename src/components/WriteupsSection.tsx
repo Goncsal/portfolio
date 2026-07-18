@@ -29,7 +29,8 @@ const WriteupsSection = () => {
             className="h-screen flex flex-col"
             style={{
                 backgroundColor: 'var(--bg-secondary)',
-                scrollSnapAlign: 'start'
+                scrollSnapAlign: 'start',
+                scrollSnapStop: 'always'
             }}
         >
             {/* Title at top */}
@@ -124,5 +125,4 @@ const WriteupsSection = () => {
     )
 }
 
-// Force rebuild
 export default WriteupsSection

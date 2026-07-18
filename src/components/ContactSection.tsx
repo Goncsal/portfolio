@@ -19,10 +19,9 @@ const ContactSection = () => {
 
             {/* Content centered in remaining space */}
             <div className="flex-1 flex flex-col justify-center w-full items-center">
-                <div className="max-w-6xl mx-auto w-full px-8 md:px-16 lg:px-24">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        {/* Contact Info */}
-                        <div className="text-center">
+                <div className="max-w-2xl mx-auto w-full px-8 md:px-16 lg:px-24">
+                    {/* Contact Info */}
+                    <div className="text-center">
                             <p className="text-xl mb-8 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                                 Feel free to reach out through any of the channels below.
@@ -73,72 +72,8 @@ const ContactSection = () => {
                                 </a>
                             </div>
                         </div>
-
-                        {/* Contact Form */}
-                        <form className="space-y-6 p-8 rounded-2xl border shadow-sm" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:border-transparent transition-all outline-none"
-                                    style={{
-                                        backgroundColor: 'var(--bg-primary)',
-                                        borderColor: 'var(--border-color)',
-                                        color: 'var(--text-primary)',
-                                        '--tw-ring-color': 'var(--accent-primary)'
-                                    } as React.CSSProperties}
-                                    placeholder="John Doe"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:border-transparent transition-all outline-none"
-                                    style={{
-                                        backgroundColor: 'var(--bg-primary)',
-                                        borderColor: 'var(--border-color)',
-                                        color: 'var(--text-primary)',
-                                        '--tw-ring-color': 'var(--accent-primary)'
-                                    } as React.CSSProperties}
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
-                                    Message
-                                </label>
-                                <textarea
-                                    id="message"
-                                    rows={4}
-                                    className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:border-transparent transition-all outline-none resize-none"
-                                    style={{
-                                        backgroundColor: 'var(--bg-primary)',
-                                        borderColor: 'var(--border-color)',
-                                        color: 'var(--text-primary)',
-                                        '--tw-ring-color': 'var(--accent-primary)'
-                                    } as React.CSSProperties}
-                                    placeholder="Your message..."
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full py-3 px-6 rounded-lg font-medium text-white transition-transform active:scale-95 hover:shadow-lg"
-                                style={{ backgroundColor: 'var(--accent-primary)' }}
-                            >
-                                Send Message
-                            </button>
-                        </form>
                     </div>
-
                 </div>
-            </div>
 
             {/* Copyright at bottom */}
             <div className="pb-8 w-full text-center">

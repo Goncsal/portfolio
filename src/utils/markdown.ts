@@ -36,19 +36,8 @@ export const parseProjectMarkdown = (content: string, filename: string): Omit<Pr
   const slug = filename.replace('.md', '')
   const title = formatTitle(slug)
 
-  // Check for thumbnail image
-  const possibleExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp']
-  let thumbnail: string | undefined
-
-  for (const ext of possibleExtensions) {
-    try {
-      // This will be handled by Vite's static asset system
-      thumbnail = `/${slug}.${ext}`
-      break
-    } catch {
-      continue
-    }
-  }
+  // Thumbnail lives in /public with the same basename as the project
+  const thumbnail = `/${slug}.png`
 
   return {
     slug,
